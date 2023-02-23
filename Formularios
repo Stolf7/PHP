@@ -91,7 +91,7 @@ Tipos de Formulario
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Formulario Radio
+Formulario OPÇÃO
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -119,6 +119,8 @@ Formulario Radio
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Formulario Radio
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -139,6 +141,30 @@ Formulario Radio
     
 
     </select>
+
+</form>
+</body>
+</html>
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Formulario CHECKBOX
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+</head>
+<body>
+
+<form action="name.php" method="post">
+    
+    <input type="checkbox" name="area1" value="com"> Computação
+    <input type="checkbox" name="area2" value="eng"> Engenharia
+    <input type="checkbox" name="area3" value="bio"> Biologia
+    <input type="checkbox" name="area4" value="psi"> Psicologia
 
 </form>
 </body>
