@@ -31,3 +31,57 @@
 </html>
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+</head>
+<body>
+
+<form action="post">
+    <label for="nome">Nome: </label>
+    <input type="text" placeholder="Nome">
+
+</br>
+
+    <label for="email">E-mail: </label>
+    <input type="text" placeholder="E-mail">
+
+</br>
+
+    <label for="endereco">Endereço: </label>
+    <input type="text" size="50" placeholder="Endereço">
+
+</br>
+
+    <label for="cidade">Cidade: </label>
+    <input type="text" size="50" placeholder="Cidade">
+
+</br>
+
+    <label for="telefone">Telefone: </label>
+    <input type="ddd" size="1" placeholder="(00)">
+    <input type="text" placeholder="0000-0000">
+
+</br>
+
+    <label for="usuario">Usuário: </label>
+    <input type="text" placeholder="Nome de usuário">
+
+</br>
+
+    <label for="senha">Senha: </label>
+    <input type="password" placeholder="Senha">
+
+</br>
+
+    <input type="button" value="Finalizar minha inscrição">
+    
+
+</form>
+</body>
+</html>
