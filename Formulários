@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+</head>
+<body>
+
+    <!-- atributo action é a configuração da acao que ira ocorrer quando o usuario clicar --> 
+    <form action="gravar.php" method="get"> <!--  get -> passa os dados atraves da url; expoem senhas; tamanho limitado pra guardar dados -->
+                                            <!--  post -> envia os dados de forma oculta -->
+    <label for="nome">Nome: </label>
+    <input type="text" name="nome" id="nome" size="50" placeholder="Seu nome">
+                        <!-- 'name' atua como se fosse o nome da variavel-->
+</br>               
+
+    <label for="senha">Senha: </label><!-- lenght -> numero maximo e minimo de caracteres que o usuario pode digitar -->
+    <input type="password" name="senha" id="senha" maxlength="30" minlength="4" placeholder="Digite sua senha"><!-- placeholder -> deixa uma mensagem na caixinha -->
+
+</br>
+
+    <input type="submit" value="Cadastrar">
+
+</br>
+
+    </form>
+
+</body>
+</html>
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
