@@ -1,3 +1,5 @@
+Formularios - Introdução
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -31,6 +33,7 @@
 </html>
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Tipos de Formulario
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -42,7 +45,7 @@
 </head>
 <body>
 
-<form action="post">
+<form action="nome.php" method="post">
     <label for="nome">Nome: </label>
     <input type="text" placeholder="Nome">
 
@@ -85,3 +88,34 @@
 </form>
 </body>
 </html>
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Formulario de Escolha
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+</head>
+<body>
+
+<form action="name.php" method="post">
+
+    <select name="escolaridade">
+
+        <option value="em">Ensino Médio</option>
+        <option value="nt">Nível Técnico</option>
+        <option value="ns">Nível Superior</option> <!-- O que o banco de dados grava de fato é o "value" -->
+
+    </select>
+
+</form>
+</body>
+</html>
+
+
+
