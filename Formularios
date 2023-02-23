@@ -91,7 +91,7 @@ Tipos de Formulario
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Formulario de Escolha
+Formulario Radio
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -117,5 +117,31 @@ Formulario de Escolha
 </body>
 </html>
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+</head>
+<body>
+
+<form action="name.php" method="post">
+
+    <!-- Nesse tipo de input o usuario é obrigado a mandar uma informação -->
+    <input type="radio" name="cargo" value="1" checked> Gerência <!-- CHECKED -=> serve para deixar uma bolinha já marcada -->
+    <input type="radio" name="cargo" value="2"> Financeiro
+    <input type="radio" name="cargo" value="3"> Recepção
+    <input type="radio" name="cargo" value="4"> Administrativo
+    
+
+    </select>
+
+</form>
+</body>
+</html>
 
 
