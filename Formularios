@@ -199,6 +199,72 @@ LEGEND, FILDSET E LABEL
 </body>
 </html>
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+EX - 1
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+</head>
+<body>
+
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+            <label for="name">Nome: </label>
+            <input type="text" name="nome">
+            </br>
+            <label for="endereco">Endereço: </label>
+            <input type="text" name="endereco">
+            </br>
+            <label for="cidade">Cidade: </label>
+            <input type="text" name="cidade">
+            </br>
+            <select name="estado" id="#">Estado: 
+                <option value="sp">São Paulo</option>
+                <option value="mg">Minas Gerais</option>
+                <option value="rj">Rio de Janeiro</option></select>
+        </fieldset>
+        </br></br></br></br>
+        <fieldset>
+            <legend>Dados Profissionais</legend>
+            <label for="naturezaDoCargo">Natureza do Cargo</label></br></br>
+            <input type="radio" name="naturezaDoCargo" value="naturezaDoCargo" checked>Gerencia
+            <input type="radio" name="naturezaDoCargo" value="naturezaDoCargo">Financeiro
+            <input type="radio" name="naturezaDoCargo" value="naturezaDoCargo">Recpcao
+            <input type="radio" name="naturezaDoCargo" value="naturezaDoCargo">Administrativo
+            <input type="radio" name="naturezaDoCargo" value="naturezaDoCargo">Juridico
+
+                </br></br></br>
+
+            <label for="areaDeInteresse">Area de interesse</label></br></br>
+            <input type="checkbox" name="areaDeInteresse" value="areaDeInteresse">Computacao
+            <input type="checkbox" name="areaDeInteresse" value="areaDeInteresse">Biologia
+            <input type="checkbox" name="areaDeInteresse" value="areaDeInteresse">Meio Ambiente
+            <input type="checkbox" name="areaDeInteresse" value="areaDeInteresse">Engenharia
+            <input type="checkbox" name="areaDeInteresse" value="areaDeInteresse">Historia
+
+                </br></br></br>
+
+            <label for="miniCurriculo">Mini-Curriculo</label>
+            <textarea name="miniCurriculo" id="#" cols="20" rows="10"></textarea>
+        </fieldset>
+
+        <input type="submit" value="Enviar">
+        <input type="submit" value="Limpar">
+       
+        </form>
+</form>
+</body>
+</html>
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
