@@ -34,11 +34,9 @@ $numero2 = $_POST['numero2'];
 $multiplicacao = ($numero1 * $numero2);
 
 if ($multiplicacao >= 50) {
-    echo("Número positivo\nResultado: $multiplicacao");
-} else if ($multiplicacao < 0) {
-    echo("Número negativo");
-} else if ($multiplicacao == 0) {
-    echo("Número nulo");
+    echo ("Resultado: $multiplicacao");
+} else {
+    echo ("Número menor que 50");
 }
 
 ?>
