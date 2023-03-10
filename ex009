@@ -1,0 +1,119 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seja bem-vindo(a) ao MyBank - Simulador de Empréstimos</title>
+</head>
+<body>
+
+    <h1>Seja bem-vindo(a) ao MyBank - Simulador de Empréstimos</h1>
+    <p>Simulador de Empréstimos</p>
+
+    <form action="phpmybank.php" method="post">
+
+    <label for="#">Nome: </label>
+    <input type="text" name="nome"><br>
+
+    <label for="#">Já é nosso cliente? </label>
+    <input type="radio" name="efetivoCliente" value="1" checked>Sim
+    <input type="radio" name="efetivoCliente" value="0">Não <br>
+
+    <label for="#">Digite o seu SERASA SCORE: </label>
+    <input type="number" name="serasaScore"> <br>
+    
+    <label for="#">Valor do Empréstimo: </label>
+    <input type="number" name="valorEmprestimo"> <br>
+
+    <label for="#">Parcelas: </label>
+    <input type="number" name="parcelas"> <br>
+
+    <input type="checkbox" name="seguroDesemprego" value="1">Desejo incluir um seguro desemprego no valor de R$49,90 <br>
+
+    <input type="submit" name="Enviar">
+
+    </form>
+
+</body>
+</html>
+
+PHP
+
+<?php
+$nome = $_POST['nome']; 
+$efetivoCliente = $_POST['efetivoCliente']; 
+$serasaScore = $_POST['serasaScore']; 
+$valorEmprestimo = $_POST['valorEmprestimo']; 
+$parcelas = $_POST['parcelas'];  
+$seguroDesemprego = $_POST['seguroDesemprego'];
+$custoTotal;
+$taxaJuros;
+$valorParcelas;
+
+if ($serasaScore >= 0 and $serasaScore <= 299) {
+    $custoTotal = $valorEmprestimo * (1 - $taxaJuros * 0.02);
+    $taxaJuros == "20%";
+} else if ($serasaScore >= 300 and $serasaScore <= 499) {
+    $custoTotal = $valorEmprestimo * (1 - $taxaJuros * 0.015);
+    $taxaJuros == "15%";
+} else if ($serasaScore >= 500 and $serasaScore <= 699) {
+    $custoTotal = $valorEmprestimo * (1 - $taxaJuros * 0.01);
+    $taxaJuros == "10%";
+} else if ($serasaScore >= 700 and $serasaScore <= 1000) {
+    $custoTotal = $valorEmprestimo * (1 - $taxaJuros * 0.005);
+    $taxaJuros == "5%";
+} else {
+    echo ("Valor invalido");
+}
+
+if ($efetivoCliente == 0) {
+    $custoTotal = (($custoTotal + 35) * 0.0038);
+} else {
+    $custoTotal = ($custoTotal * 0.0038);
+}
+
+$valorParcelas = $custoTotal / $parcelas; 
+
+if ($seguroDesemprego == 1) {
+    $valorParcelas = $valorParcelas + 49.90;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Seja bem-vindo(a) ao MyBank - Simulador de Empréstimos</h1>
+    <p>Simulador de Empréstimos</p>
+
+    <p>Valor das parcelas: <?php 
+        echo ("R$ $valorParcelas");
+    ?></p>
+
+    <br>
+
+    <p>Quantidade das parcelas: <?php
+        echo ("Quantidade de parcelas: $parcelas");
+    ?></p>
+
+    <br>
+
+    <p>Taxa de Juros <?php
+        echo ("$taxaJuros");
+    ?></p>
+
+    <br>
+
+    <p>Custo Efetivo Total: <?php
+        echo ("$custoTotal");
+    ?></p>
+</body>
+</html>
