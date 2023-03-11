@@ -1,0 +1,173 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="money.png" type="image/x-icon">
+    <title>Bem-vindo(a) ao my Bank, simulador de empréstimos</title>
+</head>
+<body>
+    <h1>Bem-vindo(a) ao my Bank<br>SIMULADOR DE EMPRÉSTIMOS</h1>
+    <form action="oi.php" method="POST">
+        <label for="nome">Nome: </label>
+        <input type="text" name="nome" id="nome" ><br>
+        <label for="efetivo">Já é nosso cliente? </label> <!-- 0 - para falso / 1 - para verdadeiro -->
+        <select name="efetivo" id="efetivo">
+            <option value="0">Não</option>
+            <option value="1">Sim</option>
+        </select> <br>
+        <label for="score">Digite o seu SERASA SCORE: </label>
+        <input type="number" name="score"> <br>
+        <label for="valor">Valor do Empréstimo: </label>
+        <input type="number" name="valor"> <br>
+        <label for="parcelas">Parcelas: </label>
+        <select name="parcelas" id="parcelas">
+            <option value="6">6</option>
+            <option value="12">12</option>
+            <option value="24">24</option>
+            <option value="36">36</option>
+            <option value="48">48</option>
+        </select>
+        <label for="seguro">Desejo incluir um seguro desemprego no valor de R$49,90</label>
+        <select name="seguro">
+            <option value="0">Não</option>
+            <option value="1">Sim</option>
+        </select><br>
+        <input type="submit" name="Enviar">
+    </form>
+</body>
+</html>
+
+
+PHP
+
+<?php
+$nome = $_POST['nome'];
+$efetivoCliente = $_POST['efetivoCliente'];
+$serasaScore = $_POST['serasaScore'];
+$valorEmprestimo = $_POST['valorEmprestimo'];
+$totalParcelas = $_POST['totalParcelas'];
+$seguroDesemprego = $_POST['seguroDesemprego'];
+$custoEfetivo = 0;
+
+
+if ($efetivoCliente == 0) {
+
+    if ($serasaScore >= 0 && $serasaScore <= 299) {
+        //taxa de juros 20%
+        $serasaScore == 0.2;
+    } else if ($serasaScore >= 300 && $serasaScore <= 499) {
+        // taxa de juros 15%
+        $serasaScore == 0.15;
+    } else if ($serasaScore >= 500 && $serasaScore <= 699) {
+        // taxa de juros 10%
+        $serasaScore == 0.1;
+    } else if ($serasaScore >= 700 && $serasaScore <= 1000) {
+        //taxa de juros 5%
+        $serasaScore == 0.05;
+    } else {
+        echo ("Valor invalido");
+    }
+
+    if ($seguroDesemprego == 1) {
+        $CustoEfetivo = $CustoEfetivo + 49.90;
+    }
+
+    $serasaScore = $serasaScore + 35; // cobranca de R$35.00 para nao clientes
+
+} else {
+    //taxa de juros 3%
+    $serasaScore == 0.03;
+}
+
+// variaveis criadas para o calculo do custo efetivo total
+$c = $valorEmprestimo;
+$i = $serasaScore;
+$t = $totalParcelas;
+// M = C (1+i)*t
+$CustoEfetivo = $c (1 + $i) ** $t; // note que  o tempo(t) esta elevado(**)
+
+$CustoEfetivoTotal = $CustoEfetivo * 0.0038; // juros de 0.38% sobre o valor do emprestimo e o valor total
+
+$valorParcelas = $custoEfetivoTotal / $totalParcelas; // valor das parcelas
+
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo(a) ao my Bank, simulador de empréstimos</title>
+</head>
+<body>
+
+    <h1>Bem-vindo(a) ao my Bank<br>SIMULADOR DE EMPRÉSTIMOS</h1>
+    <h2>RESULTADO DA SIMULAÇÃO</h2> <br>
+
+    <p>Valor das parcelas: <?php
+        echo("$valorParcelas");
+    ?></p>
+
+    <p>Quantidade de parcelas<?php
+        echo("$totalParcelas");
+    ?></p>
+
+    <p>Custo Efetivo Total<?php
+        echo("$custoEfetivoTotal");
+    ?></p>
+
+</body>
+</html>
+
+
+PHP2
+
+<?php
+$nome = $_POST['nome'];
+$cliente = $_POST['efetivo'];
+$score = $_POST['score'];
+$c = $_POST['valor'];
+$t = $_POST['parcelas'];
+$seguro = $_POST['seguro'];
+
+// Calculando juros do cliente
+
+$i = 0.0025;
+if($cliente == 0){
+    if($score <= 299){
+        $i = 0.0166666666666667;
+    }
+    elseif($score <= 499){
+        $i = 0.0125;
+    }
+    elseif($score <= 699){
+        $i = 0.0083333333333333;
+    }
+    else{
+        $i = 0.0041666666666667;
+    }
+}
+
+// Calculo Valor do empréstimo
+
+$M = $c * (( 1 + $i)**$t);
+
+// Calculo por parcela
+
+$vParc = $M / $t;
+
+// Formatando valores
+
+
+
+// Teste mostrar
+
+echo "Valor por parcela: $vParc";
+echo "Número de parcelas: $t x";
+echo "Valor final: $M";
+?>
