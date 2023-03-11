@@ -1,0 +1,151 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo(a) ao my Bank, simulador de empréstimos</title>
+
+</head>
+<body>
+    <h1>Bem-vindo(a) ao my Bank<br>SIMULADOR DE EMPRÉSTIMOS</h1>
+    <form action="index.php" method="POST">
+
+        <label for="nomeCliente">Nome: </label>
+        <input type="text" name="nomeCliente"><br>
+
+        <label for="efetivoCliente">Já é nosso cliente? </label> <!-- 0 - para falso / 1 - para verdadeiro -->
+        <select name="efetivoCliente">
+            <option value="0">Não</option>
+            <option value="1">Sim</option>
+        </select> <br>
+
+        <label for="serasaScore">Digite o seu SERASA SCORE: </label>
+        <input type="serasaScore" name="serasaScore"> <br>
+
+        <label for="valorEmprestimo">Valor do Empréstimo: </label>
+        <input type="number" name="valorEmprestimo"> <br>
+
+        <label for="totalParcelas">Parcelas: </label>
+        <select name="totalParcelas">
+
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
+            <option value="16">16</option>
+            <option value="20">20</option>
+            <option value="24">24</option>
+            <option value="28">28</option>
+            <option value="32">32</option>
+            <option value="36">36</option>
+            <option value="40">40</option>
+            <option value="44">44</option>
+            <option value="48">48</option>
+
+        </select>
+
+        <label for="seguroDesemprego">Desejo incluir um seguro desemprego no valor de R$49,90</label>
+        <select name="seguroDesemprego">
+
+            <option value="0">Não</option>
+            <option value="1">Sim</option>
+
+        </select><br>
+
+        <input type="submit" name="Enviar">
+
+    </form>
+</body>
+</html>
+
+PHP
+
+<?php
+// variaveis
+$nomeCliente = $_POST['nomeCliente'];
+$efetivoCliente = $_POST['efetivoCliente'];
+$serasaScore = $_POST['serasaScore'];
+$valorEmprestimo = $_POST['valorEmprestimo'];
+$totalParcelas = $_POST['totalParcelas'];
+$seguroDesemprego = $_POST['seguroDesemprego'];
+// taxa de juros ja definida por padrao para clientes
+$taxaDejuros = 0.03;
+
+// calculo do juros do cliente
+/*
+m = c * (1 + i) ** t -> formula de juros compostos
+m = montante
+c = capital
+i = taxa de juros
+t = tempo (total de parcelas)
+*/ 
+if ($efetivoCliente == 0) {
+
+    $valorEmprestimo = 35;
+
+    if ($serasaScore >= 0 && $serasaScore <= 299) {
+        // taxa de juros de 20%
+        $taxaDejuros = 0.2;
+    } else if ($serasaScore >= 300 && $serasaScore <= 499) {
+        // taxa de juros de 15%
+        $taxaDejuros = 0.15;
+    } else if ($serasaScore  >= 500 && $serasaScore <= 699) {
+        //taxa de juros de 10%
+        $taxaDejuros = 0.1;
+    } else if ($serasaScore >= 700 && $serasaScore <= 1000) {
+        //taxa de juros de 5%
+        $taxaDejuros = 0.05;
+    } else {
+        echo("Valor invalido. Calculo não consistente. Tente Novamente!");
+    }
+}
+
+// calculo do seguro
+
+if ($seguroDesemprego == 1) {
+    $valorEmprestimo += 49.90;
+}
+
+// aplicando a formula
+$valorTotalDoEmprestimo = $valorEmprestimo * (1 + $taxaDejuros) ** $totalParcelas; 
+// aplicando o juros de IOF sobre o total
+$valorTotalDoEmprestimo *= 0.038;
+
+// variavel que calcula o valor de cada parcela
+
+$valorDeCadaParcela = $valorTotalDoEmprestimo / $totalParcelas;
+
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo(a) ao my Bank Simulador de Empréstimos</title>
+
+</head>
+<body>
+    
+    <h1>Bem-vindo(a) ao my Bank<br>SIMULADOR DE EMPRÉSTIMOS</h1>
+    <h2>Seu Empréstimo</h2>
+
+    <p>Quantidade de parcelas: <?php
+        echo("$totalParcelas");
+    ?></p>
+
+    <p>Valor de cada parcela: <?php
+        echo("$valorDeCadaParcela");
+    ?></p>
+
+    <p>Custo Efetivo Total: <?php
+        echo("$valorTotalDoEmprestimo");
+    ?></p>
+    
+</body>
+</html>
