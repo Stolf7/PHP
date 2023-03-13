@@ -1,5 +1,4 @@
 HTML
---
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -9,17 +8,17 @@ HTML
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo(a) ao my Bank, simulador de empréstimos</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleIndex.css">
 
 </head>
 <body>
     
     <main>
         <h1>Bem-vindo(a) ao my Bank<br>SIMULADOR DE EMPRÉSTIMOS</h1>
-        <form action="index.php" method="POST">
-
+        <form action="indexPhp.php" method="POST">
+            <br>
             <label for="nomeCliente">Nome: </label>
-            <input type="text" name="nomeCliente"><br>
+            <input type="text" name="nomeCliente" placeholder="DIGITE SEU NOME"><br>
             <label for="efetivoCliente">Já é nosso cliente? </label> <!-- 0 - para falso / 1 - para verdadeiro -->
 
             <select name="efetivoCliente">
@@ -28,10 +27,10 @@ HTML
             </select> <br>
 
             <label for="serasaScore">Digite o seu SERASA SCORE: </label>
-            <input type="number" name="serasaScore"> <br>
+            <input type="number" name="serasaScore" placeholder="1 - 1000"> <br>
 
             <label for="valorEmprestimo">Valor do Empréstimo: </label>
-            <input type="number" name="valorEmprestimo"> <br>
+            <input type="number" name="valorEmprestimo" placeholder="VALOR DESEJADO"> <br>
 
             <label for="totalParcelas">Parcelas: </label>
             <select name="totalParcelas">
@@ -63,98 +62,7 @@ HTML
 </body>
 </html>
 
-PHP
---
-
-<?php
-// variaveis
-$nomeCliente = $_POST['nomeCliente'];
-$efetivoCliente = $_POST['efetivoCliente'];
-$serasaScore = $_POST['serasaScore'];
-$valorEmprestimo = $_POST['valorEmprestimo'];
-$totalParcelas = $_POST['totalParcelas'];
-$seguroDesemprego = $_POST['seguroDesemprego'];
-// taxa de juros ja definida por padrao para clientes
-$taxaDejuros = 0.03;
-
-// calculo do juros do cliente
-/*
-m = c * (1 + i) ** t -> formula de juros compostos
-m = montante
-c = capital
-i = taxa de juros
-t = tempo (total de parcelas)
-*/ 
-if ($efetivoCliente == 0) {
-
-    $valorEmprestimo = 35;
-
-    if ($serasaScore >= 0 && $serasaScore <= 299) {
-        // taxa de juros de 20%
-        $taxaDejuros = 0.2;
-    } else if ($serasaScore >= 300 && $serasaScore <= 499) {
-        // taxa de juros de 15%
-        $taxaDejuros = 0.15;
-    } else if ($serasaScore  >= 500 && $serasaScore <= 699) {
-        //taxa de juros de 10%
-        $taxaDejuros = 0.1;
-    } else if ($serasaScore >= 700 && $serasaScore <= 1000) {
-        //taxa de juros de 5%
-        $taxaDejuros = 0.05;
-    } else {
-        echo("Valor invalido. Calculo não consistente. Tente Novamente!");
-    }
-}
-
-// calculo do seguro
-
-if ($seguroDesemprego == 1) {
-    $valorEmprestimo += 49.90;
-}
-
-// aplicando a formula
-$valorTotalDoEmprestimo = $valorEmprestimo * (1 + $taxaDejuros) ** $totalParcelas; 
-// aplicando o juros de IOF sobre o total
-$valorTotalDoEmprestimo *= 0.038;
-
-// variavel que calcula o valor de cada parcela
-
-$valorDeCadaParcela = $valorTotalDoEmprestimo / $totalParcelas;
-
-?>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo(a) ao my Bank Simulador de Empréstimos</title>
-
-</head>
-<body>
-    
-    <h1>Bem-vindo(a) ao my Bank<br>SIMULADOR DE EMPRÉSTIMOS</h1>
-    <h2>Seu Empréstimo</h2>
-
-    <p>Quantidade de parcelas: <?php
-        echo("$totalParcelas");
-    ?></p>
-
-    <p>Valor de cada parcela: <?php
-        echo("$valorDeCadaParcela");
-    ?></p>
-
-    <p>Custo Efetivo Total: <?php
-        echo("$valorTotalDoEmprestimo");
-    ?></p>
-    
-</body>
-</html>
-
 CSS
---
 
 @charset "UTF-8";
 
@@ -189,7 +97,7 @@ select {
 }
 
 input[type=button], input[type=submit], input[type=reset] {
-    background-color: #04aa6d7e;
+    background-color: #c61d5e;
     border: none;
     color: white;
     padding: 16px 32px;
@@ -212,4 +120,99 @@ input[type=number] {
     box-sizing: border-box;
 }
 
+PHP
 
+<?php
+// variaveis
+$nomeCliente = $_POST['nomeCliente'];
+$efetivoCliente = $_POST['efetivoCliente'];
+$serasaScore = $_POST['serasaScore'];
+$valorEmprestimo = $_POST['valorEmprestimo'];
+$totalParcelas = $_POST['totalParcelas'];
+$seguroDesemprego = $_POST['seguroDesemprego'];
+// taxa de juros ja definida por padrao para clientes
+$taxaDejuros = 0.03;
+$valorTotalDoEmprestimo = 0;
+
+// calculo do juros do cliente
+/*
+m = c * (1 + i) ** t -> formula de juros compostos
+m = montante
+c = capital
+i = taxa de juros
+t = tempo (total de parcelas)
+*/ 
+if ($efetivoCliente == 0) {
+
+    $valorEmprestimo = $valorEmprestimo + 35;
+
+    if ($serasaScore >= 0 && $serasaScore <= 299) {
+        // taxa de juros de 20%
+        $taxaDejuros = 0.2;
+    } else if ($serasaScore >= 300 && $serasaScore <= 499) {
+        // taxa de juros de 15%
+        $taxaDejuros = 0.15;
+    } else if ($serasaScore  >= 500 && $serasaScore <= 699) {
+        //taxa de juros de 10%
+        $taxaDejuros = 0.1;
+    } else if ($serasaScore >= 700 && $serasaScore <= 1000) {
+        //taxa de juros de 5%
+        $taxaDejuros = 0.05;
+    }
+}
+
+
+// calculo do seguro
+// checkpoint
+if ($seguroDesemprego == 1) {
+    $valorEmprestimo =  $valorEmprestimo + 49.90;
+}
+
+// aplicando o juros de IOF sobre o total
+$jurosIof =  $valorTotalDoEmprestimo * 0.038;
+
+// aplicando a formula
+$valorTotalDoEmprestimo = ($valorEmprestimo * (1 + $taxaDejuros) ** $totalParcelas) + $jurosIof; 
+
+
+// variavel que calcula o valor de cada parcela
+
+$valorDeCadaParcela = $valorTotalDoEmprestimo / $totalParcelas;
+
+$valorTotalDoEmprestimo = number_format($valorTotalDoEmprestimo, 2, ",", ".");
+$valorDeCadaParcela = number_format($valorDeCadaParcela, 2, ",", ".");
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo(a) ao my Bank Simulador de Empréstimos</title>
+    <link rel="stylesheet" href="styleIndex.css">
+
+</head>
+<body>
+    
+    <main style="font-size:1.2em;">
+        <h1>Bem-vindo(a) ao my Bank<br>SIMULADOR DE EMPRÉSTIMOS</h1>
+        <h2>Seu Empréstimo</h2><br>
+        <p>Quantidade de parcelas: <?php
+            echo("R$: $totalParcelas");
+        ?></p>
+        <p>Valor de cada parcela: <?php
+            echo("R$: $valorDeCadaParcela");
+        ?></p>
+        <p>Custo Efetivo Total: <?php
+            echo("R$: $valorTotalDoEmprestimo");
+        ?></p>
+        <br><br><br><br><br>
+        <p><a style ="background-color: #c61d5e; border: none; color: white; padding: 16px 32px; text-decoration= none; margin: 4px 2px; cursor: pointer;" href ="index.html">Simular outro Empréstimo</a></p>
+    </main>
+    
+</body>
+</html>
