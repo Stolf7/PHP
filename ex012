@@ -13,3 +13,29 @@ $carros = array ("Gol","Corsa","Palio");
   print_r($carros); // echo nao vai conseguir imprimir o echo completo
 ?>
 
+ex's:
+
+<?php
+
+$nomes = array ("Amanda", "Bruno", "Camila");
+    echo $nomes[0];
+    echo $nomes[1];
+
+?>
+
+-----------------------------------------------------------------------------------------------
+
+<?php
+
+$frutas = array ("Banana", "Maça", "Pessego", "Morango", "Laranja", "Melancia", "Maracuja");
+    print_r ("$frutas[1]<br>");
+    print_r ("$frutas[3]<br>");
+    print_r ("$frutas[5]<br>");
+?>
+
+
+
+
+
+
+
