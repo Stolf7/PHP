@@ -46,6 +46,21 @@ $nomes = array ("Ana", "Barbara", "Carolina", "Daniela", "Eliana");
 echo "Fim da Lista";
 ?>
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<?php
+
+$paises = array ("Brasil", "Chile", "Equador", "Guatemala", "Mexico", "Moçambique", "Uruguai");
+
+    for ($i = 0; $i <= 6; $i++) {
+        echo ("$paises[$i]<br>");
+    }
+?>
+
+
+
+
+
 
 
 
