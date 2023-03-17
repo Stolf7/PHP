@@ -4,3 +4,12 @@ ARRAYS
 $carros = array ("Gol","Corsa","Palio");
   echo $carros[1];
 ?>
+
+
+ii)
+
+<?php
+$carros = array ("Gol","Corsa","Palio");
+  print_r($carros); // echo nao vai conseguir imprimir o echo completo
+?>
+
