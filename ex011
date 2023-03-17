@@ -40,4 +40,23 @@ for ($a; $a <= $i; $a++) {
 
 
 
+COMANDO WHILE
+
+<?php
+
+$i = $_POST['numero'];
+$a = 0;
+
+while ($i <= $i) {
+    echo("$i<br>");
+    $i = $i + 2;
+}
+
+?>
+
+
+
+
+
+
 
