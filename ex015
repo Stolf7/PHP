@@ -1,0 +1,46 @@
+<?php
+
+// ex - 15 Escreva um algoritmo que carregue um array com as letras = ['A', 'B', 'C', 'D', 'E'] e solicite ao usuario para esoclher auma das letras para substituir por X
+
+$letras = ['A', 'B', 'C', 'D', 'E'];
+
+$formulario = $_POST['formulario'];
+
+if ($formulario == 'A') {
+    $letras[0] = 'X';
+    print_r($letras);
+} else if ($formulario == 'B') {
+    $letras[1] = 'X';
+    print_r($letras);
+} else if ($formulario == 'C') {
+    $letras[2] = 'X';
+    print_r($letras);
+} else if ($formulario == 'D') {
+    $letras[3] = 'X';
+    print_r($letras);
+} else if ($formulario == 'E') {
+    $letras[4] = 'X';
+    print_r($letras);
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex015</title>
+</head>
+<body>
+
+    <h2>Letras 'A', 'B', 'C', 'D', 'E'
+    <form action="ex15.php" method="post">
+        <input type="text" name="formulario" placeholder="Escolha uma">
+        <input type="submit" value="enviar"><br>
+    </form>
+    </h2>
+    
+</body>
+</html>
