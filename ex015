@@ -8,20 +8,18 @@ $formulario = $_POST['formulario'];
 
 if ($formulario == 'A') {
     $letras[0] = 'X';
-    print_r($letras);
 } else if ($formulario == 'B') {
     $letras[1] = 'X';
-    print_r($letras);
 } else if ($formulario == 'C') {
     $letras[2] = 'X';
-    print_r($letras);
 } else if ($formulario == 'D') {
     $letras[3] = 'X';
-    print_r($letras);
 } else if ($formulario == 'E') {
     $letras[4] = 'X';
-    print_r($letras);
 }
+
+
+
 
 ?>
 
@@ -39,6 +37,13 @@ if ($formulario == 'A') {
     <form action="ex15.php" method="post">
         <input type="text" name="formulario" placeholder="Escolha uma">
         <input type="submit" value="enviar"><br>
+        <h4><?php
+        
+        for ($i = 0; $i <= 4; $i++) {
+            echo ("$letras[$i]<br>");
+        }
+
+        ?></h4>
     </form>
     </h2>
     
