@@ -18,7 +18,19 @@ if ($formulario == 'A') {
     $letras[4] = 'X';
 }
 
+OR 
 
+for ($i = 0; $i <= 4; $i++) {
+
+            if ($formulario == $letras[$i]) {
+        
+                $letras[$i] = 'X';
+        
+            }
+        
+            print_r("$letras[$i]<br>");
+            
+        }
 
 
 ?>
