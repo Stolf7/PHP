@@ -1,0 +1,62 @@
+<?php
+
+// ex 017
+
+$precoProduto1 = $_POST['precoProduto1'];
+$precoProduto2 = $_POST['precoProduto2'];
+$descontoProduto1 = $_POST['descontoProduto1'];
+$descontoProduto2 = $_POST['descontoProduto2'];
+
+
+
+$p1 = $precoProduto1;
+$p2 = $precoProduto2;
+$dp1 = $descontoProduto1;
+$dp2 = $descontoProduto2;
+
+$precoDesconto1 = ($p1 * $dp1/100) + $p1;
+$precoDesconto2 = ($p2 * $dp2/100) + $p2;
+
+$precoFinal = ($precoDesconto1 + $precoDesconto2);
+
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex017</title>
+</head>
+<body>
+
+    <h1>Calcula Desconto</h1>
+    <h2>
+        <form action="ex15.php" method="post">
+
+        <label for="#">Preço do 1 produto</label>
+        <input type="number" name="precoProduto1"> <br>
+
+        <label for="#">Desconto em % no 1 produto</label>
+        <input type="number" name="descontoProduto1"> <br>
+
+        <label for="#">Preço do 2 produto</label>
+        <input type="number" name="precoProduto2"> <br>
+
+        <label for="#">Desconto em % no 2 produto</label>
+        <input type="number" name="descontoProduto2"> <br>
+
+        <input type="submit" value="Calcular">
+
+        </form>
+    </h2>
+    <h3>
+    <?php
+    
+    echo("Calculo Desconto<br>O valor do 1 produto é R$ $precoDesconto1<br>O valor do 2 produto é R$ $precoDesconto2<br>O valor total é R$ $precoFinal");
+    
+    ?>
+    </h3>
+</body>
+</html>
